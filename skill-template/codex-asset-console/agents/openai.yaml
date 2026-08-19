@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Asset Console"
+  short_description: "管理与任务关联的本地图片、音频和视频资产"
+  default_prompt: "Use $codex-asset-console to inspect, install, verify, or repair my local Windows asset console."

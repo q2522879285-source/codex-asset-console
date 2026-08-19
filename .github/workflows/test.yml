@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Check JavaScript
+        run: |
+          node --check scripts/injector.mjs
+          node --check asset-console/public/app.js
+          node --check asset-browser/server.js
+      - name: Parse PowerShell
+        shell: pwsh
+        run: |
+          $files = @('install-windows.ps1') + @(Get-ChildItem windows, tools, skill-template/codex-asset-console/scripts -Recurse -File -Filter *.ps1)
+          foreach ($file in $files) {
+            $errors = $null
+            [void][Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file), [ref]$null, [ref]$errors)
+            if ($errors.Count) { $errors | Format-List; exit 1 }
+          }
+      - name: Build and verify release
+        shell: pwsh
+        run: |
+          ./tools/build-release.ps1
+          Expand-Archive .release/codex-asset-console-skill.zip .release/verify
+          ./.release/verify/codex-asset-console/scripts/verify.ps1 -BundleOnly

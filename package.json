@@ -1,0 +1,24 @@
+{
+  "name": "codex-asset-console",
+  "version": "1.0.0",
+  "description": "A local Windows asset console for task-linked review, managed storage, organization, and recovery.",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "asset-management",
+    "local-first",
+    "windows"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "scripts": {
+    "inspect": "node scripts/inspect-sidebar.mjs",
+    "test": "node --test",
+    "inject": "node scripts/injector.mjs --port 9231 --watch"
+  },
+  "devDependencies": {
+    "ws": "^8.21.3"
+  }
+}

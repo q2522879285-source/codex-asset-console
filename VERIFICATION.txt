@@ -1,0 +1,17 @@
+Codex Asset Console · Release Verification
+
+1. Run npm ci and npm test.
+2. Run node --check for the injector, console frontend, and local service.
+3. Parse every PowerShell installer and release script without errors.
+4. Run tools/build-release.ps1.
+5. Verify both ZIP files against their SHA-256 sidecars.
+6. Run the bundled Skill verifier with -BundleOnly.
+7. Confirm the privacy scan reports no account string, personal path, UUID, token, state file, ledger, or private media.
+
+Expected artifacts:
+- codex-asset-console-windows.zip
+- codex-asset-console-windows.zip.sha256.txt
+- codex-asset-console-skill.zip
+- codex-asset-console-skill.zip.sha256.txt
+- codex-asset-console-onepage.png
+- codex-asset-console-onepage.png.sha256.txt

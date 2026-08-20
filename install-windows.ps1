@@ -136,7 +136,7 @@ try {
     Copy-Item -LiteralPath (Join-Path $sourceDir $file) -Destination $stagingDir -Force
   }
 
-  $sourceRef = "v1.0.0"
+  $sourceRef = "v1.0.1"
   $manifest = [ordered]@{
     name = "Codex Asset Console"
     sourceRef = $sourceRef

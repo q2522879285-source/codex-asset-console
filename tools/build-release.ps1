@@ -112,7 +112,7 @@ try {
   $manifest = [ordered]@{
     schemaVersion = 1
     product = 'codex-asset-console'
-    version = '1.0.0'
+    version = '1.0.1'
     consoleZipSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $windowsZip).Hash.ToLowerInvariant()
     files = $manifestEntries
   }

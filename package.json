@@ -1,6 +1,6 @@
 {
   "name": "codex-asset-console",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A local Windows asset console for task-linked review, managed storage, organization, and recovery.",
   "license": "MIT",
   "keywords": [
